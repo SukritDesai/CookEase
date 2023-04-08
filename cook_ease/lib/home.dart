@@ -74,20 +74,7 @@ class MyHomePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:35.0),
-                    child: Text('Enter your Diet',
-                      style: GoogleFonts.notoSansGeorgian(
-                        textStyle: const TextStyle(
-                          color: Colors.black87,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const InputSelectors(),
+                  optionList
                 ],
               ),
             ),
@@ -101,6 +88,11 @@ class InputSelectors extends StatefulWidget {
   @override
   State<InputSelectors> createState() => Diets();
 }
+// class CuisineSelectors extends StatefulWidget {
+//   const CuisineSelectors({super.key});
+//   @override
+//   State<InputSelectors> createState() => Cuisine();
+// }
 
 const List<String> diets = <String>[
   "I'll Eat Anything",
@@ -116,6 +108,20 @@ const List<String> diets = <String>[
   "Low FODMAP",
   "Whole30"
 ];
+// const List<String> cuisine = <String>[
+//   "I'll Eat Anything",
+//   "Chinese",
+//   "Eastern European",
+//   "Greek",
+//   "Indian",
+//   "Italian",
+//   "Latin American",
+//   "Mexican",
+//   "Middle Eastern",
+//   "Spanish",
+//   "Thai",
+//   "Vietnamese"
+// ];
 
 class Diets extends State<InputSelectors> {
   String current = diets.first;
@@ -146,12 +152,54 @@ class Diets extends State<InputSelectors> {
   }
 }
 
-// TextFormField(
-// // The validator receives the text that the user has entered.
-//  validator: (value) {
-//    if (value == null || value.isEmpty) {
-//      return 'Enter your dietary restrictions here:';
-//    }
-//    return null;
-//  },
-// ),
+// class Cuisine extends State<InputSelectors> {
+//   String current = cuisine.first;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return DropdownButton<String>(
+//       value: current,
+//       icon: const Icon(Icons.arrow_downward),
+//       elevation: 20,
+//       style: const TextStyle(color: Colors.black),
+//       underline: Container(
+//         height: 5,
+//         color: Colors.orange,
+//       ),
+//       onChanged: (String? value) {
+//         setState(() {
+//           current = value!;
+//         });
+//       },
+//       items: cuisine.map<DropdownMenuItem<String>>((String value) {
+//         return DropdownMenuItem<String>(
+//             value: value,
+//             child: Text(value)
+//         );
+//       }).toList(),
+//     );
+//   }
+// }
+
+final optionList = DefaultTextStyle.merge(
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(35.0),
+        child: Text('Enter your Diet:',
+          style: GoogleFonts.notoSansGeorgian(
+            textStyle: const TextStyle(
+              color: Colors.black87,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+      const InputSelectors(),
+      // const CuisineSelectors(),
+    ],
+  ),
+);
