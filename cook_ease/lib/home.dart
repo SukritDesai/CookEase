@@ -75,15 +75,23 @@ class MyHomePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                   ),
-                  Text('Enter your diet',
-                    style: GoogleFonts.notoSansGeorgian(
+                  Padding(
+                    padding: const EdgeInsets.only(top:35.0),
+                    child: Text('Enter your diet',
+                      style: GoogleFonts.notoSansGeorgian(
                         textStyle: const TextStyle(
                           color: Colors.black87,
-                          fontSize: 20,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
+                  ),
+                  const Scaffold(
+                    body: Center(
+                        child: InputSelectors(),
+                    ),
                   ),
                 ],
               ),
