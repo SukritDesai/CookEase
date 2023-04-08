@@ -21,7 +21,7 @@ class Stuff extends StatelessWidget{
         ),
         home: const MyHomePage(),
         debugShowCheckedModeBanner: false
-      )
+      ),
     );
   }
 }
