@@ -72,15 +72,6 @@ class MyHomePage extends StatelessWidget {
                       textAlign: TextAlign.center, // |\| | |\| _| /\ --- /\/ | /\/ _/ /\
                     )
                 ),
-                TextFormField(
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter your dietary restrictions here:';
-                    }
-                    return null;
-                  },
-                ),
 
               ],
             ),
@@ -89,3 +80,12 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+// TextFormField(
+// // The validator receives the text that the user has entered.
+//  validator: (value) {
+//    if (value == null || value.isEmpty) {
+//      return 'Enter your dietary restrictions here:';
+//    }
+//    return null;
+//  },
+// ),
