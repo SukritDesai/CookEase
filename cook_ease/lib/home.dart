@@ -3,7 +3,6 @@ import 'dart:html';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rich_text_widget/rich_text_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main(){
@@ -37,11 +36,25 @@ class MyHomePage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
 
     return Scaffold(
+      appBar: AppBar(
+          title: Text('CookEase',
+            style: GoogleFonts.pacifico(
+              textStyle: const TextStyle(
+                color: Colors.black,
+                  fontSize: 90,
+                  fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+          centerTitle: true,
+          toolbarHeight: 200,
+          backgroundColor: Colors.orange
+      ),
       body: Center(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 350.0),
+              padding: const EdgeInsets.only(top: 100.0),
               child: Text('Let us help you find a recipe',
                 style: GoogleFonts.inter(
                   textStyle: const TextStyle(
