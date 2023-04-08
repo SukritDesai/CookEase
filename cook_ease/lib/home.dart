@@ -1,15 +1,14 @@
-import 'dart:html';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main(){
-  runApp(stuff());
+  runApp(const Stuff());
 }
 
-class stuff extends StatelessWidget{
+class Stuff extends StatelessWidget{
+  const Stuff({super.key});
+
   @override
   Widget build(BuildContext context){
     return ChangeNotifierProvider(
@@ -17,10 +16,10 @@ class stuff extends StatelessWidget{
       child: MaterialApp(
         title: 'CookEase 🍲',
         theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         ),
-        home: MyHomePage(),
+        home: const MyHomePage(),
         debugShowCheckedModeBanner: false
       )
     );
@@ -31,6 +30,8 @@ class MyAppState extends ChangeNotifier {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
