@@ -100,6 +100,59 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+class InputSelectors extends StatefulWidget {
+  const InputSelectors({super.key});
+
+  @override
+  State<StatefulWidget> createState() => Diets();
+
+}
+
+class Diets extends State<InputSelectors> {
+  static const List<String> diets = <String>[
+    "I'll Eat Anything",
+    "Vegetarian",
+    "Gluten Free",
+    "Ketogenic",
+    "Lacto-Vegetarian",
+    "Ovo-Vegetarian",
+    "Vegan",
+    "Pescetarian",
+    "Paleo",
+    "Primal",
+    "Low FODMAP",
+    "Whole30"
+  ];
+
+  String current = diets.first;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: current,
+      icon: const Icon(Icons.arrow_downward),
+      elevation: 16,
+      style: const TextStyle(color: Colors.black),
+      underline: Container(
+        height: 2,
+        color: Colors.orange,
+      ),
+      onChanged: (String? value) {
+        setState(() {
+          current = value!;
+        });
+      },
+      items: diets.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String> (
+          value: value,
+          child: Text(value)
+        );
+      }).toList(),
+    );
+  }
+}
+
 // TextFormField(
 // // The validator receives the text that the user has entered.
 //  validator: (value) {
