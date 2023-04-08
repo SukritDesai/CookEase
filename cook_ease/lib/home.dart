@@ -33,44 +33,59 @@ class MyAppState extends ChangeNotifier {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    return Scaffold(
-      appBar: AppBar(
-          title: Text('CookEase',
-            style: GoogleFonts.pacifico(
-              textStyle: const TextStyle(
-                color: Colors.black,
-                  fontSize: 90,
-                  fontWeight: FontWeight.bold
-                )
-            ),
-          ),
-          centerTitle: true,
-          toolbarHeight: 200,
-          backgroundColor: Colors.orange
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Text('Let us help you find a recipe',
-                style: GoogleFonts.inter(
-                  textStyle: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  )
-                ),
-                textAlign: TextAlign.center, // |\| | |\| _| /\ --- /\/ | /\/ _/ /\
-              ),
-            ),
-
-          ],
+    return Container(
+    decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("images/image_1.png"),
+          fit: BoxFit.cover,
         ),
       ),
+      child: Scaffold(
+        backgroundColor: Colors.white.withOpacity(0.5),
+          appBar: AppBar(
+              title: Text('CookEase',
+                style: GoogleFonts.pacifico(
+                    textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 90,
+                        fontWeight: FontWeight.bold
+                    )
+                ),
+              ),
+              centerTitle: true,
+              toolbarHeight: 200,
+              backgroundColor: Colors.orange
+          ),
+          body: Center(
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.only(top: 100.0),
+                    child: Text('Let us help you find a recipe',
+                      style: GoogleFonts.inter(
+                          textStyle: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          )
+                      ),
+                      textAlign: TextAlign.center, // |\| | |\| _| /\ --- /\/ | /\/ _/ /\
+                    )
+                ),
+                TextFormField(
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Enter your dietary restrictions here:';
+                    }
+                    return null;
+                  },
+                ),
 
+              ],
+            ),
+          )
+      )
     );
   }
 }
