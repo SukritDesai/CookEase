@@ -8,7 +8,6 @@ void main(){
 
 class Stuff extends StatelessWidget{
   const Stuff({super.key});
-
   @override
   Widget build(BuildContext context){
     return ChangeNotifierProvider(
@@ -77,7 +76,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:35.0),
-                    child: Text('Enter your diet',
+                    child: Text('Enter your Diet',
                       style: GoogleFonts.notoSansGeorgian(
                         textStyle: const TextStyle(
                           color: Colors.black87,
@@ -88,11 +87,7 @@ class MyHomePage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const Scaffold(
-                    body: Center(
-                        child: InputSelectors(),
-                    ),
-                  ),
+                  const InputSelectors(),
                 ],
               ),
             ),
@@ -103,28 +98,26 @@ class MyHomePage extends StatelessWidget {
 
 class InputSelectors extends StatefulWidget {
   const InputSelectors({super.key});
-
   @override
-  State<StatefulWidget> createState() => Diets();
-
+  State<InputSelectors> createState() => Diets();
 }
 
-class Diets extends State<InputSelectors> {
-  static const List<String> diets = <String>[
-    "I'll Eat Anything",
-    "Vegetarian",
-    "Gluten Free",
-    "Ketogenic",
-    "Lacto-Vegetarian",
-    "Ovo-Vegetarian",
-    "Vegan",
-    "Pescetarian",
-    "Paleo",
-    "Primal",
-    "Low FODMAP",
-    "Whole30"
-  ];
+const List<String> diets = <String>[
+  "I'll Eat Anything",
+  "Vegetarian",
+  "Gluten Free",
+  "Ketogenic",
+  "Lacto-Vegetarian",
+  "Ovo-Vegetarian",
+  "Vegan",
+  "Pescetarian",
+  "Paleo",
+  "Primal",
+  "Low FODMAP",
+  "Whole30"
+];
 
+class Diets extends State<InputSelectors> {
   String current = diets.first;
 
   @override
@@ -132,10 +125,10 @@ class Diets extends State<InputSelectors> {
     return DropdownButton<String>(
       value: current,
       icon: const Icon(Icons.arrow_downward),
-      elevation: 16,
+      elevation: 20,
       style: const TextStyle(color: Colors.black),
       underline: Container(
-        height: 2,
+        height: 5,
         color: Colors.orange,
       ),
       onChanged: (String? value) {
