@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// example call
+// FoodCard(
+//     title: "Apple Or Peach Strudel",
+//     imageUrl: "https://spoonacular.com/recipeImages/73420-312x231.jpg",
+// ),
+
 class FoodCard extends StatelessWidget {
-  const FoodCard(
-      {super.key,
-      required this.title,
-      required this.imageUrl,
-      required this.missedIngredientCount});
+  const FoodCard({
+    super.key,
+    required this.title,
+    required this.imageUrl,
+  });
 
   final String title;
   final String imageUrl;
-  final int missedIngredientCount;
 
   @override
   Widget build(BuildContext context) {
