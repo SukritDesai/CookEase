@@ -78,8 +78,8 @@ class MyHomePage extends StatelessWidget {
                   optionList,
                   const SizedBox(
                     child: IngredientSelector(),
-                    height: 300,
-                    width: 300,
+                    height: 130,
+                    width: 600,
                   ),
                 ],
               ),
@@ -94,12 +94,6 @@ class InputSelectors extends StatefulWidget {
   @override
   State<InputSelectors> createState() => Diets();
 }
-// class CuisineSelectors extends StatefulWidget {
-//   const CuisineSelectors({super.key});
-//   @override
-//   State<InputSelectors> createState() => Cuisine();
-// }
-
 const List<String> diets = <String>[
   "I'll Eat Anything",
   "Vegetarian",
@@ -114,21 +108,6 @@ const List<String> diets = <String>[
   "Low FODMAP",
   "Whole30"
 ];
-// const List<String> cuisine = <String>[
-//   "I'll Eat Anything",
-//   "Chinese",
-//   "Eastern European",
-//   "Greek",
-//   "Indian",
-//   "Italian",
-//   "Latin American",
-//   "Mexican",
-//   "Middle Eastern",
-//   "Spanish",
-//   "Thai",
-//   "Vietnamese"
-// ];
-
 class Diets extends State<InputSelectors> {
   String current = diets.first;
 
@@ -165,36 +144,6 @@ class Diets extends State<InputSelectors> {
     );
   }
 }
-
-// class Cuisine extends State<InputSelectors> {
-//   String current = cuisine.first;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return DropdownButton<String>(
-//       value: current,
-//       icon: const Icon(Icons.arrow_downward),
-//       elevation: 20,
-//       style: const TextStyle(color: Colors.black),
-//       underline: Container(
-//         height: 5,
-//         color: Colors.orange,
-//       ),
-//       onChanged: (String? value) {
-//         setState(() {
-//           current = value!;
-//         });
-//       },
-//       items: cuisine.map<DropdownMenuItem<String>>((String value) {
-//         return DropdownMenuItem<String>(
-//             value: value,
-//             child: Text(value)
-//         );
-//       }).toList(),
-//     );
-//   }
-// }
-
 final optionList = DefaultTextStyle.merge(
   child: Row(
     mainAxisAlignment: MainAxisAlignment.center,

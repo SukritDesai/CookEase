@@ -28,22 +28,44 @@ class Ingredients extends State<IngredientSelector> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ingredients'),
-      ),
+      backgroundColor: Colors.white.withOpacity(0),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          padding: const EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
-              const SizedBox(height: 40),
+              Text('Ingredients:',
+                style: GoogleFonts.notoSansGeorgian(
+                  textStyle: const TextStyle(
+                    color: Colors.black87,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                textAlign: TextAlign.center,
+              ),
               MultiSelectBottomSheetField<Ingredient?>(
                 key: _multiSelectKey,
                 initialChildSize: 0.7,
                 maxChildSize: 0.95,
-                title: const Text("Ingredients"),
-                buttonText: const Text("Ingredients used"),
+                title: Text("Ingredients",
+                  style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500
+                      )
+                  ),
+                ),
+                buttonText: Text("Ingredients used",
+                  style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500
+                      )
+                  ),
+                ),
                 items: _items,
                 searchable: true,
                 onConfirm: (values) {
@@ -61,7 +83,6 @@ class Ingredients extends State<IngredientSelector> {
                   },
                 ),
               ),
-              const SizedBox(height: 40),
             ],
           ),
         ),
