@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cook_ease/IngredientSelector.dart';
 
 void main(){
   runApp(const Stuff());
@@ -74,7 +75,12 @@ class MyHomePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                   ),
-                  optionList
+                  optionList,
+                  const SizedBox(
+                    child: IngredientSelector(),
+                    height: 300,
+                    width: 300,
+                  ),
                 ],
               ),
             ),
@@ -145,7 +151,15 @@ class Diets extends State<InputSelectors> {
       items: diets.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String> (
           value: value,
-          child: Text(value)
+          child: Text(value,
+          style: GoogleFonts.inter(
+            textStyle: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w500
+            )
+          ),
+          )
         );
       }).toList(),
     );
@@ -186,7 +200,7 @@ final optionList = DefaultTextStyle.merge(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Padding(
-        padding: const EdgeInsets.all(35.0),
+        padding: const EdgeInsets.only(right: 20.0, top: 32.0, bottom: 35.0),
         child: Text('Enter your Diet:',
           style: GoogleFonts.notoSansGeorgian(
             textStyle: const TextStyle(
