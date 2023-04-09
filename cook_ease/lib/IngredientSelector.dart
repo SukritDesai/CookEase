@@ -14,16 +14,8 @@ class Ingredients extends State<IngredientSelector> {
   Ingredient current = ingredients.first;
   final _items = ingredients.map((ingredient) => MultiSelectItem<Ingredient>(ingredient,ingredient.name))
       .toList();
-  List<Ingredient?> ingredients2 = [];
   List<Ingredient?> ingredients3 = [];
-  List<Ingredient?> ingredients4 = [];
   final _multiSelectKey = GlobalKey<FormFieldState>();
-
-  @override
-  void initState() {
-    ingredients4 = ingredients;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +60,7 @@ class Ingredients extends State<IngredientSelector> {
                 ),
                 items: _items,
                 searchable: true,
+                isDismissible: false,
                 onConfirm: (values) {
                   setState(() {
                     ingredients3 = values;

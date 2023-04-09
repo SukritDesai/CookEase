@@ -64,42 +64,68 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Text('Let us help you find a recipe',
-                        style: GoogleFonts.inter(
-                            textStyle: const TextStyle(
-                              color: Colors.black87,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20.0, top: 32.0, bottom: 35.0),
-                    child: Text('Enter your Diet:',
-                      style: GoogleFonts.notoSansGeorgian(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text('Let us help you find a recipe',
+                      style: GoogleFonts.inter(
                         textStyle: const TextStyle(
                           color: Colors.black87,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const InputSelectors(),
-                  const CuisineSelectors(),
-                  const SizedBox(
-                      height: 46,
-                      width: 300,
-                      child: IntoleranceSelector()
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0, top: 32.0, bottom: 35.0),
+                        child: Text('Enter your Diet:',
+                          style: GoogleFonts.notoSansGeorgian(
+                            textStyle: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const InputSelectors(),
+                    ],
                   ),
                   const SizedBox(
-                      height: 300,
-                      width: 300,
-                      child: IngredientSelector()
+                    height: 130,
+                    width: 600,
+                    child: IngredientSelector(),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0, top: 22.0, bottom: 35.0),
+                        child: Text('Enter Preferred Cuisine:',
+                          style: GoogleFonts.notoSansGeorgian(
+                            textStyle: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 10.0),
+                        child: CuisineSelectors(),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 70,
+                    width: 600,
+                    child: IntoleranceSelector()
                   ),
                 ],
               ),

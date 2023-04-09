@@ -3,8 +3,72 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multiselect/multiselect.dart';
 
+class IntoleranceSelector extends StatefulWidget {
+  const IntoleranceSelector({Key? key}) : super(key: key);
+  @override
+  State<IntoleranceSelector> createState() => _IntoleranceSelector();
+}
+
+class _IntoleranceSelector extends State<IntoleranceSelector> {
+  List<String> intos = ["Dairy", "Egg", "Grain", "Peanut", "Seafood", "Sesame", "Gluten", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"];
+  List<String> selectedIntos = [];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white.withOpacity(0),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            DropDownMultiSelect(
+              hintStyle: GoogleFonts.inter(
+                  textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500
+                  )
+              ),
+              selected_values_style: GoogleFonts.inter(
+                  textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500
+                  )
+              ),
+              options: intos,
+              selectedValues: selectedIntos,
+              onChanged: (value) {
+                Text('Selected Intolerances $value',
+                  style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500
+                      )
+                  ),
+                );
+                setState(() {
+                  selectedIntos = value;
+                });
+                Text("You have selected $selectedIntos as the intolerances.",
+                  style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500
+                      )
+                  ),
+                );
+              },
+              whenEmpty: "Select your dietary restrictions",
+
+            )
+          ]
+        ),
+      )
+    );
+  }
+}
 const List<String> cuisine = <String>[
-  "Select cuisine",
   "Chinese",
   "Eastern European",
   "Greek",
@@ -17,40 +81,6 @@ const List<String> cuisine = <String>[
   "Thai",
   "Vietnamese"
 ];
-
-class IntoleranceSelector extends StatefulWidget {
-  const IntoleranceSelector({Key? key}) : super(key: key);
-  @override
-  State<IntoleranceSelector> createState() => _IntoleranceSelector();
-}
-
-class _IntoleranceSelector extends State<IntoleranceSelector> {
-  List<String> intos = ["Dairy", "Egg", "Grain", "Peanut", "Seafood", "Sesame", "Gluten", "Peanut", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"];
-  List<String> selectedIntos = [];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            DropDownMultiSelect(
-              options: intos,
-              selectedValues: selectedIntos,
-              onChanged: (value) {
-                Text('Selected Intolerances $value');
-                setState(() {
-                  selectedIntos = value;
-                });
-                Text("You have selected $selectedIntos as the intolerances.");
-              },
-              whenEmpty: "Select your dietary restrictions",
-            )
-          ]
-        ),
-      )
-    );
-  }
-}
 
 class CuisineSelectors extends StatefulWidget {
   const CuisineSelectors({super.key});
@@ -79,8 +109,16 @@ class Cuisine extends State<CuisineSelectors> {
       },
       items: cuisine.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value)
+          value: value,
+          child: Text(value,
+            style: GoogleFonts.inter(
+              textStyle: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w500
+              )
+            ),
+          )
         );
       }).toList(),
     );
@@ -94,7 +132,7 @@ class InputSelectors extends StatefulWidget {
 }
 
 const List<String> diets = <String>[
-  "Select Dietary Restrictions",
+  "I Eat Everything!",
   "Vegetarian",
   "Gluten Free",
   "Ketogenic",
