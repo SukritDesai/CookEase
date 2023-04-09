@@ -76,8 +76,31 @@ class MyHomePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                   ),
-                  optionList,
-                  optionList1,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0, top: 32.0, bottom: 35.0),
+                    child: Text('Enter your Diet:',
+                      style: GoogleFonts.notoSansGeorgian(
+                        textStyle: const TextStyle(
+                          color: Colors.black87,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const InputSelectors(),
+                  const CuisineSelectors(),
+                  const SizedBox(
+                      height: 46,
+                      width: 300,
+                      child: IntoleranceSelector()
+                  ),
+                  const SizedBox(
+                      height: 300,
+                      width: 300,
+                      child: IngredientSelector()
+                  ),
                 ],
               ),
             ),
@@ -85,43 +108,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-final optionList = DefaultTextStyle.merge(
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(right: 20.0, top: 32.0, bottom: 35.0),
-        child: Text('Enter your Diet:',
-          style: GoogleFonts.notoSansGeorgian(
-            textStyle: const TextStyle(
-              color: Colors.black87,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ),
-      const InputSelectors(),
-      const CuisineSelectors(),
-      const SizedBox(
-          height: 46,
-          width: 300,
-          child: IntoleranceSelector()
-      ),
-    ],
-  ),
-);
-final optionList1 = DefaultTextStyle.merge(
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      const SizedBox(
-          height: 300,
-          width: 300,
-          child: IngredientSelector()
-      ),
-    ],
-  ),
-);
