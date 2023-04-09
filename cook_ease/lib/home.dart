@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cook_ease/IngredientSelector.dart';
+import 'extra.dart';
 
 void main(){
   runApp(const Stuff());
@@ -85,61 +86,6 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class InputSelectors extends StatefulWidget {
-  const InputSelectors({super.key});
-  @override
-  State<InputSelectors> createState() => Diets();
-}
-const List<String> diets = <String>[
-  "I'll Eat Anything",
-  "Vegetarian",
-  "Gluten Free",
-  "Ketogenic",
-  "Lacto-Vegetarian",
-  "Ovo-Vegetarian",
-  "Vegan",
-  "Pescetarian",
-  "Paleo",
-  "Primal",
-  "Low FODMAP",
-  "Whole30"
-];
-class Diets extends State<InputSelectors> {
-  String current = diets.first;
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: current,
-      icon: const Icon(Icons.arrow_downward),
-      elevation: 20,
-      style: const TextStyle(color: Colors.black),
-      underline: Container(
-        height: 5,
-        color: Colors.orange,
-      ),
-      onChanged: (String? value) {
-        setState(() {
-          current = value!;
-        });
-      },
-      items: diets.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String> (
-          value: value,
-          child: Text(value,
-          style: GoogleFonts.inter(
-            textStyle: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.w500
-            )
-          ),
-          )
-        );
-      }).toList(),
-    );
-  }
-}
 final optionList = DefaultTextStyle.merge(
   child: Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -158,7 +104,24 @@ final optionList = DefaultTextStyle.merge(
         ),
       ),
       const InputSelectors(),
-      // const CuisineSelectors(),
+      const CuisineSelectors(),
+      const SizedBox(
+          height: 46,
+          width: 300,
+          child: IntoleranceSelector()
+      ),
+    ],
+  ),
+);
+final optionList1 = DefaultTextStyle.merge(
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const SizedBox(
+          height: 300,
+          width: 300,
+          child: IngredientSelector()
+      ),
     ],
   ),
 );
