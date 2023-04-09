@@ -1,3 +1,4 @@
+import 'package:cook_ease/Responses.dart';
 import 'package:cook_ease/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +13,6 @@ class IntoleranceSelector extends StatefulWidget {
 
 class _IntoleranceSelector extends State<IntoleranceSelector> {
   List<String> intos = ["Dairy", "Egg", "Grain", "Peanut", "Seafood", "Sesame", "Gluten", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"];
-  List<String> selectedIntos = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class _IntoleranceSelector extends State<IntoleranceSelector> {
                   )
               ),
               options: intos,
-              selectedValues: selectedIntos,
+              selectedValues: Responses.selectedIntos,
               onChanged: (value) {
                 Text('Selected Intolerances $value',
                   style: GoogleFonts.inter(
@@ -48,9 +48,9 @@ class _IntoleranceSelector extends State<IntoleranceSelector> {
                   ),
                 );
                 setState(() {
-                  selectedIntos = value;
+                  Responses.selectedIntos = value;
                 });
-                Text("You have selected $selectedIntos as the intolerances.",
+                Text("You have selected $Responses.selectedIntos as the intolerances.",
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
@@ -101,7 +101,6 @@ class Cuisines extends State<CuisineSelectors> {
   final _items = cuisine
       .map((_cuisine) => MultiSelectItem<Cuisine>(_cuisine, _cuisine.name))
       .toList();
-  List<Cuisine?> cuisines2 = [];
   final _multiSelectKey = GlobalKey<FormFieldState>();
   @override
   Widget build(BuildContext context) {
@@ -140,7 +139,7 @@ class Cuisines extends State<CuisineSelectors> {
                 isDismissible: false,
                 onConfirm: (values) {
                   setState(() {
-                    cuisines2 = values;
+                    Responses.cuisines2 = values;
                   });
                   _multiSelectKey.currentState?.validate();
                 },
@@ -176,12 +175,10 @@ const List<String> diets = <String>[
 ];
 
 class Diets extends State<InputSelectors> {
-  String current = diets.first;
-
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: current,
+      value: Responses.diet,
       icon: const Icon(Icons.arrow_downward),
       elevation: 20,
       style: const TextStyle(color: Colors.black),
@@ -191,7 +188,7 @@ class Diets extends State<InputSelectors> {
       ),
       onChanged: (String? value) {
         setState(() {
-          current = value!;
+          Responses.diet = value!;
         });
       },
       items: diets.map<DropdownMenuItem<String>>((String value) {

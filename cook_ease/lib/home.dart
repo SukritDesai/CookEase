@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cook_ease/IngredientSelector.dart';
+import 'Responses.dart';
 import 'extra.dart';
 
 void main(){
@@ -156,7 +157,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       onPressed: () {
                         //TODO: make the button do smth
-                        print('hi');
+                        Responses().printout();
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),

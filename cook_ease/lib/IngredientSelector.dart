@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:cook_ease/IngredientsList.dart';
+import 'package:cook_ease/Responses.dart';
 
 class IngredientSelector extends StatefulWidget {
   const IngredientSelector({super.key});
@@ -10,10 +11,8 @@ class IngredientSelector extends StatefulWidget {
 }
 
 class Ingredients extends State<IngredientSelector> {
-  Ingredient current = ingredients.first;
   final _items = ingredients.map((ingredient) => MultiSelectItem<Ingredient>(ingredient,ingredient.name))
       .toList();
-  List<Ingredient?> ingredients3 = [];
   final _multiSelectKey = GlobalKey<FormFieldState>();
 
   @override
@@ -78,7 +77,7 @@ class Ingredients extends State<IngredientSelector> {
                 isDismissible: false,
                 onConfirm: (values) {
                   setState(() {
-                    ingredients3 = values;
+                    Responses.ingredients3 = values;
                   });
                   _multiSelectKey.currentState?.validate();
                 },
@@ -87,7 +86,7 @@ class Ingredients extends State<IngredientSelector> {
                   textStyle: GoogleFonts.inter(color: Colors.black),
                   onTap: (item) {
                     setState(() {
-                      ingredients3.remove(item);
+                      Responses.ingredients3.remove(item);
                     });
                     _multiSelectKey.currentState?.validate();
                   },
