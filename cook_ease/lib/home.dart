@@ -18,7 +18,7 @@ class Stuff extends StatelessWidget{
         title: 'CookEase 🍲',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         ),
         home: const MyHomePage(),
         debugShowCheckedModeBanner: false
@@ -34,7 +34,6 @@ class MyAppState extends ChangeNotifier {
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +44,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         child: Scaffold(
-            backgroundColor: Colors.white.withOpacity(0.5),
+            backgroundColor: Colors.white.withOpacity(0.7),
             appBar: AppBar(
                 title: Text('CookEase',
                   style: GoogleFonts.pacifico(
@@ -105,7 +104,7 @@ class MyHomePage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 20.0, top: 22.0, bottom: 35.0),
-                        child: Text('Enter Preferred Cuisine:',
+                        child: Text('Enter Preferred Cuisines:',
                           style: GoogleFonts.notoSansGeorgian(
                             textStyle: const TextStyle(
                               color: Colors.black87,
@@ -118,7 +117,14 @@ class MyHomePage extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.only(bottom: 10.0),
-                        child: CuisineSelectors(),
+                        child: Padding(
+                          padding: EdgeInsets.only(top:10.0),
+                          child: SizedBox(
+                            height: 60,
+                            width: 220,
+                            child: CuisineSelectors()),
+                        )
+                        ,
                       )
                     ],
                   ),
@@ -127,6 +133,45 @@ class MyHomePage extends StatelessWidget {
                     width: 600,
                     child: IntoleranceSelector()
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black87),
+                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.hovered)){
+                              return Colors.orange.withOpacity(0.04);
+                            }
+                            if (states.contains(MaterialState.focused) ||
+                              states.contains(MaterialState.pressed)) {
+                              return Colors.black87.withOpacity(1);
+                            }
+                            return null; // Defer to the widget's default.
+                          },
+                        ),
+                        backgroundColor: MaterialStateProperty.all(
+                          Colors.orange.shade400
+                        ),
+                      ),
+                      onPressed: () {
+                        //TODO: make the button do smth
+                        print('hi');
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text('Submit my Choices',
+                          style: GoogleFonts.inter(
+                              textStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

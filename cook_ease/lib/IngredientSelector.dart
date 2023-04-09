@@ -38,7 +38,6 @@ class Ingredients extends State<IngredientSelector> {
               MultiSelectBottomSheetField<Ingredient?>(
                 backgroundColor: Colors.white,
                 selectedColor: Colors.orange,
-
                 key: _multiSelectKey,
                 initialChildSize: 0.7,
                 maxChildSize: 0.95,
@@ -51,7 +50,7 @@ class Ingredients extends State<IngredientSelector> {
                     )
                   ),
                 ),
-                buttonText: Text("Ingredients used",
+                buttonText: Text("Ingredients I Have",
                   style: GoogleFonts.inter(
                     textStyle: const TextStyle(
                       color: Colors.black,
@@ -59,6 +58,20 @@ class Ingredients extends State<IngredientSelector> {
                       fontWeight: FontWeight.w500
                     )
                   ),
+                ),
+                itemsTextStyle: GoogleFonts.inter(
+                    textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500
+                    )
+                ),
+                selectedItemsTextStyle: GoogleFonts.inter(
+                    textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500
+                    )
                 ),
                 items: _items,
                 searchable: true,
