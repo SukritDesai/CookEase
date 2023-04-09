@@ -76,11 +76,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                   ),
                   optionList,
-                  const SizedBox(
-                    child: IngredientSelector(),
-                    height: 130,
-                    width: 600,
-                  ),
+                  optionList1,
                 ],
               ),
             ),
