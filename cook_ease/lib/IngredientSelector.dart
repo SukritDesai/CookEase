@@ -27,7 +27,7 @@ class Ingredients extends State<IngredientSelector> {
           child: Column(
             children: <Widget>[
               Text('Ingredients:',
-                style: GoogleFonts.notoSansGeorgian(
+                style: GoogleFonts.inter(
                   textStyle: const TextStyle(
                     color: Colors.black87,
                     fontSize: 30,
@@ -37,25 +37,28 @@ class Ingredients extends State<IngredientSelector> {
                 textAlign: TextAlign.center,
               ),
               MultiSelectBottomSheetField<Ingredient?>(
+                backgroundColor: Colors.white,
+                selectedColor: Colors.orange,
+
                 key: _multiSelectKey,
                 initialChildSize: 0.7,
                 maxChildSize: 0.95,
                 title: Text("Ingredients",
                   style: GoogleFonts.inter(
-                      textStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500
-                      )
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500
+                    )
                   ),
                 ),
                 buttonText: Text("Ingredients used",
                   style: GoogleFonts.inter(
-                      textStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500
-                      )
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500
+                    )
                   ),
                 ),
                 items: _items,
@@ -68,6 +71,8 @@ class Ingredients extends State<IngredientSelector> {
                   _multiSelectKey.currentState?.validate();
                 },
                 chipDisplay: MultiSelectChipDisplay(
+                  chipColor: Colors.orange.shade300,
+                  textStyle: GoogleFonts.inter(color: Colors.black),
                   onTap: (item) {
                     setState(() {
                       ingredients3.remove(item);
