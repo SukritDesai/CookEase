@@ -26,13 +26,13 @@ class FoodCard extends StatelessWidget {
       padding: const EdgeInsets.all(cardPadding),
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           boxShadow: [
             BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 3,
                 blurRadius: 5,
-                offset: Offset(0, 3))
+                offset: const Offset(0, 3))
           ]),
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         ClipRRect(
@@ -46,7 +46,7 @@ class FoodCard extends StatelessWidget {
                 height: 180,
               ),
             )),
-        SizedBox(width: cardPadding),
+        const SizedBox(width: cardPadding),
         Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

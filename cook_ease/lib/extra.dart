@@ -12,64 +12,68 @@ class IntoleranceSelector extends StatefulWidget {
 }
 
 class _IntoleranceSelector extends State<IntoleranceSelector> {
-  List<String> intos = ["Dairy", "Egg", "Grain", "Peanut", "Seafood", "Sesame", "Gluten", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"];
+  List<String> intos = [
+    "Dairy",
+    "Egg",
+    "Grain",
+    "Peanut",
+    "Seafood",
+    "Sesame",
+    "Gluten",
+    "Shellfish",
+    "Soy",
+    "Sulfite",
+    "Tree Nut",
+    "Wheat"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white.withOpacity(0),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
+        backgroundColor: Colors.white.withOpacity(0),
+        body: SingleChildScrollView(
+          child: Column(children: [
             DropDownMultiSelect(
               hintStyle: GoogleFonts.inter(
                   textStyle: const TextStyle(
                       color: Colors.black,
                       fontSize: 20,
-                      fontWeight: FontWeight.w500
-                  )
-              ),
+                      fontWeight: FontWeight.w500)),
               selected_values_style: GoogleFonts.inter(
                   textStyle: const TextStyle(
                       color: Colors.black,
                       fontSize: 20,
-                      fontWeight: FontWeight.w500
-                  )
-              ),
+                      fontWeight: FontWeight.w500)),
               options: intos,
               selectedValues: Responses.selectedIntos,
               onChanged: (value) {
-                Text('Selected Intolerances $value',
+                Text(
+                  'Selected Intolerances $value',
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
-                          fontWeight: FontWeight.w500
-                      )
-                  ),
+                          fontWeight: FontWeight.w500)),
                 );
                 setState(() {
                   Responses.selectedIntos = value;
                 });
-                Text("You have selected $Responses.selectedIntos as the intolerances.",
+                Text(
+                  "You have selected $Responses.selectedIntos as the intolerances.",
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
-                          fontWeight: FontWeight.w500
-                      )
-                  ),
+                          fontWeight: FontWeight.w500)),
                 );
               },
               whenEmpty: "Select your dietary restrictions",
-
             )
-          ]
-        ),
-      )
-    );
+          ]),
+        ));
   }
 }
-class Cuisine{
+
+class Cuisine {
   final int id;
   final String name;
   Cuisine({
@@ -77,18 +81,19 @@ class Cuisine{
     required this.name,
   });
 }
+
 List<Cuisine> cuisine = <Cuisine>[
-  Cuisine(id:0, name:"Chinese"),
-  Cuisine(id:1, name:"Eastern European"),
-  Cuisine(id:2, name:"Greek"),
-  Cuisine(id:3, name:"Indian"),
-  Cuisine(id:4, name:"Italian"),
-  Cuisine(id:5, name:"Latin American"),
-  Cuisine(id:6, name:"Mexican"),
-  Cuisine(id:7, name:"Middle Eastern"),
-  Cuisine(id:8, name:"Spanish"),
-  Cuisine(id:9, name:"Thai"),
-  Cuisine(id:10 ,name:"Vietnamese")
+  Cuisine(id: 0, name: "Chinese"),
+  Cuisine(id: 1, name: "Eastern European"),
+  Cuisine(id: 2, name: "Greek"),
+  Cuisine(id: 3, name: "Indian"),
+  Cuisine(id: 4, name: "Italian"),
+  Cuisine(id: 5, name: "Latin American"),
+  Cuisine(id: 6, name: "Mexican"),
+  Cuisine(id: 7, name: "Middle Eastern"),
+  Cuisine(id: 8, name: "Spanish"),
+  Cuisine(id: 9, name: "Thai"),
+  Cuisine(id: 10, name: "Vietnamese")
 ];
 
 class CuisineSelectors extends StatefulWidget {
@@ -114,25 +119,22 @@ class Cuisines extends State<CuisineSelectors> {
               MultiSelectDialogField<Cuisine?>(
                 backgroundColor: Colors.white,
                 selectedColor: Colors.orange,
-
                 key: _multiSelectKey,
-                title: Text("Cuisines",
+                title: Text(
+                  "Cuisines",
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
-                          fontWeight: FontWeight.w500
-                      )
-                  ),
+                          fontWeight: FontWeight.w500)),
                 ),
-                buttonText: Text("Cuisines I Want",
+                buttonText: Text(
+                  "Cuisines I Want",
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
-                          fontWeight: FontWeight.w500
-                      )
-                  ),
+                          fontWeight: FontWeight.w500)),
                 ),
                 items: _items,
                 searchable: false,
@@ -192,18 +194,16 @@ class Diets extends State<InputSelectors> {
         });
       },
       items: diets.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String> (
+        return DropdownMenuItem<String>(
             value: value,
-            child: Text(value,
+            child: Text(
+              value,
               style: GoogleFonts.inter(
                   textStyle: const TextStyle(
                       color: Colors.black,
                       fontSize: 20,
-                      fontWeight: FontWeight.w500
-                  )
-              ),
-            )
-        );
+                      fontWeight: FontWeight.w500)),
+            ));
       }).toList(),
     );
   }
