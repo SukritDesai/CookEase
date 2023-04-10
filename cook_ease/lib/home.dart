@@ -2,9 +2,9 @@ import 'package:cook_ease/IngredientSelector.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import 'extra.dart';
-
+import 'package:cook_ease/Responses.dart';
+import 'package:cook_ease/extra.dart';
+import 'package:cook_ease/Responses.dart';
 void main() {
   runApp(const Stuff());
 }

@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 // example call
 // FoodCard(
@@ -12,6 +15,7 @@ class FoodCard extends StatelessWidget {
     super.key,
     required this.title,
     required this.imageUrl,
+
   });
 
   final String title;
@@ -66,7 +70,50 @@ class FoodCard extends StatelessWidget {
                   ),
                   child: const Text("Recipe Details"))
             ]),
-      ]),
+        const SizedBox(width: cardPadding),
+        // Image.network(
+        //   image.Url,
+        // )
+
+    ]),
+    );
+  }
+
+  factory FoodCard.fromJson(Map<String, dynamic> json) {
+    return FoodCard(
+      title: json['title'],
+      imageUrl: json['image'],
     );
   }
 }
+
+Future<RecipeCard> fetchRecipeCard(int id) async {
+  final response = await http
+      .get(Uri.parse('https://api.spoonacular.com/recipes/$id/card'));
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return RecipeCard.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load food card image from api');
+  }
+}
+
+class RecipeCard {
+  final String url;
+
+  const RecipeCard({
+    required this.url,
+
+  });
+
+  factory RecipeCard.fromJson(Map<String, dynamic> json) {
+    return RecipeCard(
+      url: json['url'],
+    );
+  }
+}
+
