@@ -200,12 +200,16 @@ class FirstRoute extends StatelessWidget {
 class SecondRoute extends StatelessWidget {
   const SecondRoute({super.key});
 
+  List<Future<Recipe>> getRecipes() {
+    List<Future<Recipe>> recipes = [];
+    for (int i = 0; i < 5; i++) {
+      recipes.add(fetchRecipe(i));
+    }
+    return recipes;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Recipes'),
-      ),
-    );
+    return const MyRecipe();
   }
 }

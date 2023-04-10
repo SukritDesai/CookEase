@@ -1,17 +1,14 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
-import 'package:cook_ease/main.dart';
+
+import 'package:cook_ease/Responses.dart';
+import 'package:cook_ease/food_card.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:cook_ease/Responses.dart';
 
 Future<Recipe> fetchRecipe() async {
   var response = await http.get(Uri.parse(Responses.apiCall()));
   if (response.statusCode == 200) {
-    Recipe r = Recipe.fromJson(jsonDecode(response.body));
-    print(response.body);
-    print(r.id);
-    return Recipe.fromJson(jsonDecode(response.body));
+    return Recipe.fromJson(jsonDecode(response.body), index);
   } else {
     throw Exception('Failed to load recipe!');
   }
@@ -28,27 +25,19 @@ class Recipe {
     required this.imageUrl,
   });
 
-  factory Recipe.fromJson(Map<String, dynamic> json) {
-    print(json['id']);
-    print(json['title']);
+  factory Recipe.fromJson(Map<String, dynamic> json, int index) {
     return Recipe(
-      id: json['results']["id"],
-      title: json['results']["title"],
-      imageUrl: json['results']["imageUrl"]
-    );
+        id: json['results'][index]['id'],
+        title: json['results'][index]['title'],
+        imageUrl: json['results'][index]['image']);
   }
-}
-void main(){
-    runApp(const MyApp());
-    print(fetchRecipe());
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyRecipeState();
-
+  State<MyRecipe> createState() => _MyRecipeState();
 }
 
 class _MyRecipeState extends State<MyApp> {
@@ -57,36 +46,40 @@ class _MyRecipeState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    futureRecipe = fetchRecipe();
+    getRecipes();
+  }
+
+  void getRecipes() {
+    for (int i = 0; i < 5; i++) {
+      recipes.add(fetchRecipe(i));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fetch Data Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Recipes'),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Fetch Data Example'),
-        ),
-        body: Center(
-          child: FutureBuilder<Recipe>(
-            future: futureRecipe,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
-            },
-          ),
-        ),
-      ),
+      body: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index) {
+            return FutureBuilder<Recipe>(
+              future: recipes[index],
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return FoodCard(
+                      id: snapshot.data!.id,
+                      title: snapshot.data!.title,
+                      imageUrl: snapshot.data!.imageUrl);
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                // By default, show a loading spinner.
+                return const CircularProgressIndicator();
+              },
+            );
+          }),
     );
   }
 }

@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
-
 // example call
 // FoodCard(
 //     id: 716429
@@ -67,9 +66,8 @@ class FoodCard extends StatelessWidget {
               ),
               TextButton(
                   onPressed: () async {
-
-                    final response = await http
-                        .get(Uri.parse('https://api.spoonacular.com/recipes/$id/information'));
+                    final response = await http.get(Uri.parse(
+                        'https://api.spoonacular.com/recipes/$id/information?apiKey=${Responses.apiKey}&includeNutrition=false'));
                     var json;
                     Uri link;
 
@@ -79,15 +77,12 @@ class FoodCard extends StatelessWidget {
                       json = jsonDecode(response.body);
                       link = Uri.parse(json['sourceUrl']);
                       launchUrl(link);
-
                     } else {
                       // If the server did not return a 200 OK response,
                       // then throw an exception.
                       throw Exception('Failed to load recipe link from api');
                     }
-
                   },
-
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.orange[50],
                     textStyle: GoogleFonts.inter(fontWeight: FontWeight.w500),
@@ -95,7 +90,7 @@ class FoodCard extends StatelessWidget {
                   ),
                   child: const Text("Recipe Details"))
             ]),
-    ]),
+      ]),
     );
   }
 
@@ -107,4 +102,3 @@ class FoodCard extends StatelessWidget {
     );
   }
 }
-
