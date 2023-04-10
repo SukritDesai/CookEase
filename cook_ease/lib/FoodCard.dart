@@ -3,21 +3,25 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
+
 
 // example call
 // FoodCard(
-//     title: "Apple Or Peach Strudel",
-//     imageUrl: "https://spoonacular.com/recipeImages/73420-312x231.jpg",
+//     id: 716429
+//     title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
+//     imageUrl: "https://spoonacular.com/recipeImages/716429-312x231.jpg",
 // ),
 
 class FoodCard extends StatelessWidget {
   const FoodCard({
     super.key,
+    required this.id,
     required this.title,
     required this.imageUrl,
-
   });
 
+  final int id;
   final String title;
   final String imageUrl;
 
@@ -62,7 +66,28 @@ class FoodCard extends StatelessWidget {
                 height: 10,
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () async {
+
+                    final response = await http
+                        .get(Uri.parse('https://api.spoonacular.com/recipes/$id/information'));
+                    var json;
+                    Uri link;
+
+                    if (response.statusCode == 200) {
+                      // If the server did return a 200 OK response,
+                      // then parse the JSON.
+                      json = jsonDecode(response.body);
+                      link = Uri.parse(json['sourceUrl']);
+                      launchUrl(link);
+
+                    } else {
+                      // If the server did not return a 200 OK response,
+                      // then throw an exception.
+                      throw Exception('Failed to load recipe link from api');
+                    }
+
+                  },
+
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.orange[50],
                     textStyle: GoogleFonts.inter(fontWeight: FontWeight.w500),
@@ -70,49 +95,15 @@ class FoodCard extends StatelessWidget {
                   ),
                   child: const Text("Recipe Details"))
             ]),
-        const SizedBox(width: cardPadding),
-        // Image.network(
-        //   image.Url,
-        // )
-
     ]),
     );
   }
 
   factory FoodCard.fromJson(Map<String, dynamic> json) {
     return FoodCard(
+      id: json['id'],
       title: json['title'],
       imageUrl: json['image'],
-    );
-  }
-}
-
-Future<RecipeCard> fetchRecipeCard(int id) async {
-  final response = await http
-      .get(Uri.parse('https://api.spoonacular.com/recipes/$id/card'));
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return RecipeCard.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load food card image from api');
-  }
-}
-
-class RecipeCard {
-  final String url;
-
-  const RecipeCard({
-    required this.url,
-
-  });
-
-  factory RecipeCard.fromJson(Map<String, dynamic> json) {
-    return RecipeCard(
-      url: json['url'],
     );
   }
 }
