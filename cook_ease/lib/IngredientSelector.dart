@@ -24,16 +24,16 @@ class Ingredients extends State<IngredientSelector> {
           alignment: Alignment.center,
           child: Column(
             children: <Widget>[
-              Text('Ingredients:',
-                style: GoogleFonts.inter(
-                  textStyle: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                textAlign: TextAlign.center,
-              ),
+              // Text('Ingredients:',
+              //   style: GoogleFonts.inter(
+              //     textStyle: const TextStyle(
+              //       color: Colors.black87,
+              //       fontSize: 18,
+              //     ),
+              //   ),
+              //   textAlign: TextAlign.center,
+              // ),
+              // const SizedBox(width: 50),
               MultiSelectBottomSheetField<Ingredient?>(
                 backgroundColor: Colors.white,
                 selectedColor: Colors.orange,
@@ -44,7 +44,7 @@ class Ingredients extends State<IngredientSelector> {
                   style: GoogleFonts.inter(
                     textStyle: const TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500
                     )
                   ),
@@ -53,7 +53,7 @@ class Ingredients extends State<IngredientSelector> {
                   style: GoogleFonts.inter(
                     textStyle: const TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500
                     )
                   ),

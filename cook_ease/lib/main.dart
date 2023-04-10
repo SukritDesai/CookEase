@@ -54,12 +54,12 @@ class MyHomePage extends StatelessWidget {
             ),
             centerTitle: true,
             toolbarHeight: 150,
-            backgroundColor: Colors.orange),
+            backgroundColor: Colors.white.withOpacity(0.5)),
         body: Center(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.all(40),
                 child: Text(
                   'Let us help you find a recipe',
                   style: GoogleFonts.inter(
@@ -76,15 +76,13 @@ class MyHomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, top: 32.0, bottom: 35.0),
+                    padding: const EdgeInsets.only(right: 20.0),
                     child: Text(
                       'Enter your Diet:',
                       style: GoogleFonts.notoSansGeorgian(
                         textStyle: const TextStyle(
                           color: Colors.black87,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
                       ),
                       textAlign: TextAlign.center,
@@ -109,8 +107,7 @@ class MyHomePage extends StatelessWidget {
                       style: GoogleFonts.notoSansGeorgian(
                         textStyle: const TextStyle(
                           color: Colors.black87,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
                       ),
                       textAlign: TextAlign.center,
@@ -157,14 +154,14 @@ class MyHomePage extends StatelessWidget {
                     );
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Text(
                       'Submit my Choices',
                       style: GoogleFonts.inter(
                           textStyle: const TextStyle(
                               color: Colors.black,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w700)),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600)),
                     ),
                   ),
                 ),

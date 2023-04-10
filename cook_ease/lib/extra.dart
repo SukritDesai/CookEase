@@ -35,24 +35,24 @@ class _IntoleranceSelector extends State<IntoleranceSelector> {
               decoration: const InputDecoration(
                 labelStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
               ),
               hintStyle: GoogleFonts.inter(
                   textStyle: const TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500)),
               selected_values_style: GoogleFonts.inter(
                   textStyle: const TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500)),
               options: intos,
               selectedValues: Responses.selectedIntos,
@@ -62,7 +62,7 @@ class _IntoleranceSelector extends State<IntoleranceSelector> {
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500)),
                 );
                 setState(() {
@@ -73,7 +73,7 @@ class _IntoleranceSelector extends State<IntoleranceSelector> {
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500)),
                 );
               },
@@ -136,7 +136,7 @@ class Cuisines extends State<CuisineSelectors> {
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500)),
                 ),
                 buttonText: Text(
@@ -144,7 +144,7 @@ class Cuisines extends State<CuisineSelectors> {
                   style: GoogleFonts.inter(
                       textStyle: const TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500)),
                 ),
                 items: _items,
@@ -191,13 +191,15 @@ class Diets extends State<InputSelectors> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
+      dropdownColor: Colors.orange[50],
       value: Responses.diet,
-      icon: const Icon(Icons.arrow_downward),
+      icon: const Icon(Icons.arrow_downward, color: Colors.black,),
       elevation: 20,
       style: const TextStyle(color: Colors.black),
+      focusColor: Colors.white.withOpacity(0.2),
       underline: Container(
-        height: 5,
-        color: Colors.orange,
+        height: 1.5,
+        color: Colors.grey[600],
       ),
       onChanged: (String? value) {
         setState(() {
@@ -212,7 +214,7 @@ class Diets extends State<InputSelectors> {
               style: GoogleFonts.inter(
                   textStyle: const TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500)),
             ));
       }).toList(),
