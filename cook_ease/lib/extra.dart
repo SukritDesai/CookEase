@@ -33,6 +33,18 @@ class _IntoleranceSelector extends State<IntoleranceSelector> {
         body: SingleChildScrollView(
           child: Column(children: [
             DropDownMultiSelect(
+              decoration: const InputDecoration(
+                labelStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.orange),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.orange),
+                ),
+              ),
               hintStyle: GoogleFonts.inter(
                   textStyle: const TextStyle(
                       color: Colors.black,

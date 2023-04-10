@@ -1,11 +1,15 @@
-class Ingredient{
+class Ingredient {
   final int id;
   final String name;
   Ingredient({
     required this.name,
     required this.id,
   });
+  String getName() {
+    return name;
+  }
 }
+
 List<Ingredient> ingredients = [
   Ingredient(name: '5 spice powder', id: 1002002),
   Ingredient(name: 'acorn squash', id: 11482),
