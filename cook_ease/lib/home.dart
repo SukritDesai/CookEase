@@ -164,7 +164,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
