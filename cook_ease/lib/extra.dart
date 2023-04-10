@@ -191,7 +191,7 @@ class Diets extends State<InputSelectors> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      dropdownColor: Colors.orange[50],
+      dropdownColor: Colors.white,
       value: Responses.diet,
       icon: const Icon(Icons.arrow_downward, color: Colors.black,),
       elevation: 20,
