@@ -1,10 +1,10 @@
 import 'package:cook_ease/IngredientSelector.dart';
+import 'package:cook_ease/complex_search.dart';
+import 'package:cook_ease/extra.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:cook_ease/Responses.dart';
-import 'package:cook_ease/extra.dart';
-import 'package:cook_ease/Responses.dart';
+
 void main() {
   runApp(const Stuff());
 }
@@ -152,9 +152,9 @@ class MyHomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const SecondRoute()),
+                      MaterialPageRoute(
+                          builder: (context) => const SecondRoute()),
                     );
-                    print(Responses.apiCall());
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
@@ -176,6 +176,7 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
 class FirstRoute extends StatelessWidget {
   const FirstRoute({super.key});
 

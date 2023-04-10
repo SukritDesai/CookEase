@@ -5,7 +5,7 @@ import 'package:cook_ease/food_card.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<Recipe> fetchRecipe() async {
+Future<Recipe> fetchRecipe(int index) async {
   var response = await http.get(Uri.parse(Responses.apiCall()));
   if (response.statusCode == 200) {
     return Recipe.fromJson(jsonDecode(response.body), index);
@@ -33,16 +33,15 @@ class Recipe {
   }
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyRecipe extends StatefulWidget {
+  const MyRecipe({super.key});
 
   @override
   State<MyRecipe> createState() => _MyRecipeState();
 }
 
-class _MyRecipeState extends State<MyApp> {
-  late Future<Recipe> futureRecipe;
-
+class _MyRecipeState extends State<MyRecipe> {
+  late List<Future<Recipe>> recipes = [];
   @override
   void initState() {
     super.initState();

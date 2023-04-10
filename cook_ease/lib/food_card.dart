@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cook_ease/Responses.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -71,11 +72,14 @@ class FoodCard extends StatelessWidget {
                     var json;
                     Uri link;
 
+                    print(response.toString());
+                    print(jsonDecode(response.body));
+
                     if (response.statusCode == 200) {
                       // If the server did return a 200 OK response,
                       // then parse the JSON.
                       json = jsonDecode(response.body);
-                      link = Uri.parse(json['sourceUrl']);
+                      link = Uri.parse(json['spoonacularSourceUrl']);
                       launchUrl(link);
                     } else {
                       // If the server did not return a 200 OK response,
