@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("images/image_1.png"),
+          image: AssetImage('assets/images/image_1.png'),
           fit: BoxFit.cover,
         ),
       ),
