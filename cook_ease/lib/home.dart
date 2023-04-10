@@ -150,7 +150,11 @@ class MyHomePage extends StatelessWidget {
                         MaterialStateProperty.all(Colors.orange.shade400),
                   ),
                   onPressed: () {
-                    //Responses().writeToFile();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SecondRoute()),
+                    );
+                    print(Responses.apiCall());
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
