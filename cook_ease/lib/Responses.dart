@@ -7,7 +7,7 @@ class Responses {
   static List<Cuisine?> cuisines2 = [];
   static String diet = diets.first;
   // static String apiKey = "1f9d617ba13041859ea773423b0e6291";
-  static String apiKey = "d8883b88b4f640f9b6ed64914754cb09"; // Ethan's key
+  static String apiKey = "883fc7dc6bab43f8b6328a652b48be7a"; // Ethan's key
   static String url =
       "https://api.spoonacular.com/recipes/complexSearch?apiKey=$apiKey";
   static String apiCall() {
